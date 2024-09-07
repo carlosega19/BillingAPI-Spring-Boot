@@ -1,7 +1,6 @@
 TODO:
     - Subirlo a git
     ----------------
-    - Mejorar el endpoint POST bill
     - Agregar funciones realistas de busqueda o mercadeo
     - Swagger UI
     - Mejorar el workshop

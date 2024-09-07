@@ -34,7 +34,6 @@ public class UserController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-    
     @GetMapping(value = "/name={username}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<?> getUserByUsername(@PathVariable String username) {
         Optional<User> user = userService.findByUsername(username);
@@ -43,7 +42,6 @@ public class UserController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-
     @GetMapping(value = "/email={email}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<?> getUserByEmail(@PathVariable String email) {
         Optional<User> user = userService.findByEmail(email);
@@ -52,12 +50,20 @@ public class UserController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-
     @GetMapping(value = "/pass={password}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<?> getUserByPassword(@PathVariable String password) {
         Optional<User> user = userService.findByPassword(password);
         if (user.isPresent()) {
             return new ResponseEntity<>(user.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping(value = "/{id}/bills", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<?> getUserBills(@PathVariable Long id) {
+        Optional<User> user = userService.findById(id);
+        if (user.isPresent()) {
+            return new ResponseEntity<>(user.get().getBills(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

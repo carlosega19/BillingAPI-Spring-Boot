@@ -3,6 +3,9 @@ package com.main.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -13,7 +16,7 @@ public class Bill {
     @Column(nullable = false)
     private Long id;
 
-    @Column(nullable = false, length = 10)
+    @Column(length = 10)
     private String date;
 
     @Column()

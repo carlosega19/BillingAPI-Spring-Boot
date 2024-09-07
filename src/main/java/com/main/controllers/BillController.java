@@ -31,15 +31,21 @@ public class BillController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping(value = "/user={id}", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public List<Bill> getBillsByUserId(@PathVariable Long id) {
-        return billService.findByUserId(id);
+
+    @GetMapping(value = "/betters", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<List<Bill>> getBestBills() {
+        List<Bill> bills = billService.mostExpensiveBills();
+        if (bills.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(bills);
     }
 
     // POSTs
     @PostMapping(value = "/user={id}", produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Bill> createBill(@RequestBody Bill bill, @PathVariable Long id) {
-        billService.save(bill, id);
+        Bill res = billService.save(bill, id);
+        if (res == null) return ResponseEntity.badRequest().build();
         return ResponseEntity.ok(bill);
     }
 
