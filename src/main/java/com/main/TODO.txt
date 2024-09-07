@@ -1,0 +1,14 @@
+TODO:
+    - Subirlo a git
+    ----------------
+    - Mejorar el endpoint POST bill
+    - Agregar funciones realistas de busqueda o mercadeo
+    - Swagger UI
+    - Mejorar el workshop
+
+
+PERSONAL:
+    - Implementarle un front
+    - Adaptarlo con CURS
+    - Cambiar la DB al localhost de MySQL
+    - Subirlo a mi github
